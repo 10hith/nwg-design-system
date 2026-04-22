@@ -1,0 +1,110 @@
+{
+  "skill_name": "manage-nwg-design-system",
+  "notes": "Evals are deliberately concrete — each prompt simulates a real maintenance ask. Inputs reference slides from the PDFs already in the workspace so the skill can open them directly. Assertions target side effects on the three HTML files (new archetype slot added, JSON parses after edit, etc.) rather than any particular prose wording in the assistant's reply.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "new-layout-timeline",
+      "prompt": "I found a slide in the 2025 C&I Investor Spotlight (page 12) that shows 6 quarterly KPIs laid out on a horizontal rail — current quarter highlighted in dark purple, prior quarters in light purple, gold underline under the current label. We don't have this as an archetype yet. Add it to the design system. It should be used when we need to show a small time series of independent KPIs (4-8 periods, each a single metric). Call it 'KPI Timeline'.",
+      "expected_output": "A new archetype '13_timeline' appears in nwg-layouts.html (with rendered mockup, tag='argument', note starting with 'Best for'), and in nwg-data-to-layout.html (in the archetypes map, with a matching decision rule referencing a new data_shape like 'time_ordered_kpis', and an entry in constraints.max_items_per_layout). Classification JSON version bumps (e.g. 1.0.0 → 1.1.0). The validator script passes.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "new-archetype-slot-added-to-layouts",
+          "check": "grep for 'KPI Timeline' or a slot with num=13 in nwg-layouts.html"
+        },
+        {
+          "name": "archetype-entry-added-to-classification",
+          "check": "parse #nwg-classification JSON and verify a key matching '13_' exists in archetypes"
+        },
+        {
+          "name": "decision-rule-references-new-archetype",
+          "check": "at least one entry in the decision array has use starting with '13_'"
+        },
+        {
+          "name": "classification-version-bumped",
+          "check": "#nwg-classification version is not '1.0.0' (patch or minor bump)"
+        },
+        {
+          "name": "validator-passes",
+          "check": "running scripts/validate_design_system.py on design-system/ exits 0"
+        },
+        {
+          "name": "asked-user-when-to-use",
+          "check": "transcript shows the skill confirming or restating the usage rule before editing (the 'when to use' step isn't skipped)"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "new-component-alert-badge",
+      "prompt": "Add a new component called 'alert badge' to the design system. It's a small rounded pill (about 24px tall) that sits in the top-right of a KPI card when a metric breaches a threshold. Two variants: default (tint bg, purple text) and solid (warning-orange bg, near-black text). I don't have a PDF for this — just work from that description.",
+      "expected_output": "CSS class .badge-alert (and .badge-alert.solid) added to nwg-design-system.html, a showcase block appears in the Components section, and either the tokens JSON gets a 'components' section entry or at minimum the visual showcase is present. No archetype changes. nwg-layouts.html untouched. Validator passes.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "css-class-added",
+          "check": "nwg-design-system.html contains a CSS rule for .badge-alert"
+        },
+        {
+          "name": "showcase-rendered",
+          "check": "nwg-design-system.html contains visible HTML using class='badge-alert'"
+        },
+        {
+          "name": "uses-existing-tokens",
+          "check": "the new .badge-alert CSS uses var(--...) custom properties rather than hard-coded hex"
+        },
+        {
+          "name": "layouts-file-unchanged",
+          "check": "nwg-layouts.html has no git diff (the ask is component-scoped only)"
+        },
+        {
+          "name": "validator-passes",
+          "check": "scripts/validate_design_system.py exits 0"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "duplicate-rejection",
+      "prompt": "Here's a slide from the private banking deck (attached image) that has three columns, each with an icon, a heading, and a short paragraph. Please add it as a new archetype.",
+      "expected_output": "The skill recognises this matches existing archetype 05_pillars ('3-Column Pillars'), does NOT append a 13th archetype, and instead either (a) tells the user this is already covered and optionally refines the note on 05_pillars, or (b) asks whether they meant to add a variant or update the note. No new archetype created. Validator passes. This eval catches over-eager appending.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "no-new-archetype-added",
+          "check": "classification JSON still has exactly 12 archetypes (or whatever the starting count was)"
+        },
+        {
+          "name": "existing-archetype-identified",
+          "check": "assistant mentions '05_pillars' or 'pillars' or 'existing archetype' in its response"
+        },
+        {
+          "name": "layouts-file-has-correct-slot-count",
+          "check": "grep count of '<div class=\"slot\">' in nwg-layouts.html matches the original count"
+        },
+        {
+          "name": "validator-passes",
+          "check": "scripts/validate_design_system.py exits 0"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "missing-usage-rule",
+      "prompt": "Add this to the design system.",
+      "expected_output": "The skill does not start editing files. It asks the user to share the reference (no file provided) AND/OR to describe when the pattern should be used. No file edits happen until the user provides enough input.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "no-files-edited",
+          "check": "no changes to any of the three HTML files"
+        },
+        {
+          "name": "asks-for-reference-or-usage",
+          "check": "assistant reply asks for a PDF/image AND/OR asks the user when this pattern should be used"
+        }
+      ]
+    }
+  ]
+}
