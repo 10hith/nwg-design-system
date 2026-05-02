@@ -1,0 +1,11 @@
+{
+  "id": "slide-01",
+  "template": "s-cover/v1-default",
+  "slots": {
+    "kicker": "Q3 2026 Results",
+    "title": "Building a simpler, stronger bank",
+    "subtitle": "Investor briefing — October 2026",
+    "date": "2 October 2026"
+  },
+  "chart_data": null
+}

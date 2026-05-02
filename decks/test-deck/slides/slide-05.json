@@ -1,0 +1,14 @@
+{
+  "id": "slide-05",
+  "template": "s-close/v1-thanks",
+  "slots": {
+    "title": "Thank you",
+    "subtitle": "Questions & Answers",
+    "paragraphs": [
+      "NatWest Group plc, 36 St Andrew Square, Edinburgh EH2 2YB",
+      "Investor Relations: ir@natwestgroup.com · +44 131 556 8555",
+      "This presentation contains forward-looking statements. Actual results may differ materially from those projected."
+    ]
+  },
+  "chart_data": null
+}

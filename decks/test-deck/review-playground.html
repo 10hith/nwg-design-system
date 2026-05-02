@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NWG Deck Review</title>
+<style>
+:root{--p900:#2B0A4A;--p800:#3D0F66;--p700:#4F1783;--p500:#7B2CBF;--p400:#9D5BD6;--p100:#ECDCF7;--p050:#F7EFFC;--gold:#FDAB1F;--n100:#F3F3F5;--n300:#D7D7DE;--n700:#4E4E5A;--n900:#1F1B2E;--danger:#E43E6E}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#eeeaf5;color:var(--n900)}
+header{height:54px;background:var(--p800);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-weight:800}
+.app{display:grid;grid-template-columns:260px 1fr 320px;height:calc(100vh - 54px)}
+aside{background:white;border-right:1px solid #ddd;padding:14px;overflow:auto}
+.right{border-left:1px solid #ddd;border-right:0}
+.stage{padding:24px;overflow:auto;display:grid;place-items:start center}
+.main-frame{width:1280px;height:720px;border:0;background:white;box-shadow:0 18px 48px #2b0a4a2e;transform-origin:top center}
+.thumb{width:220px;height:124px;border:2px solid transparent;border-radius:10px;overflow:hidden;background:white;margin:0 0 12px;position:relative;cursor:pointer}
+.thumb.active{border-color:var(--p700)}
+.thumb.has-feedback:after{content:"";position:absolute;right:8px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.thumb iframe{width:1280px;height:720px;border:0;transform:scale(.172);transform-origin:top left;pointer-events:none}
+.thumb span{position:absolute;left:7px;top:6px;background:var(--p800);color:white;border-radius:99px;padding:2px 7px;font-size:11px}
+.controls{display:grid;gap:10px;margin-bottom:14px}
+.controls button,.controls select,.controls input{width:100%;padding:9px 10px;border:1px solid var(--n300);border-radius:9px;background:white}
+.controls button{background:var(--p700);color:white;font-weight:800;cursor:pointer}
+.controls label{font-size:12px;color:var(--n700);font-weight:800}
+.queue{display:grid;gap:10px}
+.item{border:1px solid #e3ddeb;border-radius:10px;padding:10px;background:#fbf9ff;cursor:pointer}
+.item small{display:block;color:var(--n700);margin-bottom:5px}
+.popover{position:fixed;z-index:10;background:white;border:1px solid #ddd;border-radius:12px;box-shadow:0 14px 36px #2b0a4a33;padding:12px;width:300px}
+.popover textarea{width:100%;height:92px;border:1px solid #ddd;border-radius:8px;padding:8px}
+.popover .row{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+.popover button{border:0;border-radius:8px;padding:8px 10px}
+.save{background:var(--p700);color:white}
+.status{font-size:12px;color:var(--n700);padding-top:8px}
+.danger{background:var(--danger)!important;color:white!important}
+.ghost{background:#eee!important;color:#222!important}
+.navrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+</style>
+</head>
+<body>
+<header><div>NWG Review Playground</div><div id="slideCount">Loading…</div></header>
+<div class="app">
+  <aside>
+    <div class="controls">
+      <label for="palette">Theme</label>
+      <select id="palette"><option value="default">NWG Purple</option><option value="blue">Cool Blue</option><option value="mono">Mono</option></select>
+      <label for="templateSwap">This slide template</label>
+      <select id="templateSwap"></select>
+      <label for="vizSwap">Chart type</label>
+      <select id="vizSwap"><option value="">Not a chart slide</option><option value="bar">Bar</option><option value="line">Line</option><option value="area">Area</option><option value="pie">Pie</option><option value="scatter">Scatter</option></select>
+      <button id="addSlide">+ Add slide</button>
+      <button id="saveOrder">Save reorder</button>
+    </div>
+    <div id="thumbs"></div>
+  </aside>
+  <main class="stage">
+    <iframe id="mainFrame" class="main-frame"></iframe>
+    <div class="navrow"><button id="prev">◀ Previous</button><button id="next">Next ▶</button></div>
+    <div class="status" id="status"></div>
+  </main>
+  <aside class="right"><h3>Feedback queue</h3><div id="queue" class="queue"></div></aside>
+</div>
+<script>
+const state = { deck: null, feedback: null, index: 0, slideMeta: new Map() };
+const tokens = { default: {}, blue: {'--p800':'#065A82','--p700':'#1C7293','--p500':'#028090','--p100':'#DDF3F6','--p050':'#F0FAFC'}, mono: {'--p800':'#1F1B2E','--p700':'#4E4E5A','--p500':'#8C8C97','--p100':'#F3F3F5','--p050':'#FAFAFA'} };
+const variants = { 's-cover':['s-cover/v1-default'], 's-section':['s-section/v1-default'], 's-agenda':['s-agenda/v1-default'], 's-stack':['s-stack/v1-default'], 's-3col':['s-3col/v1-icon-bullets'], 's-matrix':['s-matrix/v1-default'], 's-stats':['s-stats/v1-grid'], 's-chart':['s-chart/v1-narrative'], 's-hub':['s-hub/v1-donut'], 's-process':['s-process/v1-horizontal'], 's-tree':['s-tree/v1-default'], 's-close':['s-close/v1-thanks'] };
+async function load(){state.deck=await fetch('deck.json').then(r=>r.json());state.feedback=await fetch('feedback.json').then(r=>r.json()).catch(()=>({version:1,session_started_at:new Date().toISOString(),items:[]}));await Promise.all(state.deck.slides.map(async id=>{const meta=await fetch(`slides/${id}.json`).then(r=>r.json()).catch(()=>null);if(meta)state.slideMeta.set(id,meta)}));render()}
+function currentSlide(){return state.deck.slides[state.index]}
+function currentMeta(){return state.slideMeta.get(currentSlide())||{}}
+function render(){slideCount.textContent=`Slide ${state.index+1} of ${state.deck.slides.length}`;renderControls();renderThumbs();renderFrame();renderQueue();status()}
+function renderControls(){const template=currentMeta().template||'';const layout=template.split('/')[0];templateSwap.innerHTML=(variants[layout]||[template]).map(v=>`<option value="${v}" ${v===template?'selected':''}>${v}</option>`).join('');const isChart=layout==='s-chart'||layout==='s-hub';vizSwap.disabled=!isChart;vizSwap.value=isChart?(currentMeta().chart_data?.type||'bar'):''}
+function renderThumbs(){thumbs.innerHTML='';state.deck.slides.forEach((id,i)=>{const d=document.createElement('div');const hasFeedback=state.feedback.items.some(item=>item.slide_id===id);d.className=`thumb${i===state.index?' active':''}${hasFeedback?' has-feedback':''}`;d.draggable=true;d.innerHTML=`<iframe src="slides/${id}.html"></iframe><span>${i+1}</span>`;d.onclick=()=>{state.index=i;render()};d.ondragstart=e=>e.dataTransfer.setData('text/plain',i);d.ondragover=e=>e.preventDefault();d.ondrop=e=>{e.preventDefault();const from=Number(e.dataTransfer.getData('text/plain'));const moved=state.deck.slides.splice(from,1)[0];state.deck.slides.splice(i,0,moved);state.index=i;render()};thumbs.appendChild(d)})}
+function renderFrame(){mainFrame.src=`slides/${currentSlide()}.html`;mainFrame.onload=()=>injectBridge(mainFrame,currentSlide())}
+function injectBridge(iframe,slideId){const doc=iframe.contentDocument;Object.entries(tokens[palette.value]||{}).forEach(([k,v])=>doc.documentElement.style.setProperty(k,v));if(!doc.getElementById('feedback-styles')){const style=doc.createElement('style');style.id='feedback-styles';style.textContent='.feedback-hover{outline:3px dashed var(--p400);outline-offset:3px;cursor:pointer}.feedback-highlight{outline:4px solid var(--gold);outline-offset:4px}.feedback-marker{position:absolute;right:-10px;top:-10px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#1F1B2E;font-size:12px;font-weight:900;display:grid;place-items:center;pointer-events:none;z-index:1000}';doc.head.appendChild(style)}doc.querySelectorAll('[data-feedback="true"]').forEach(el=>{el.onmouseenter=()=>el.classList.add('feedback-hover');el.onmouseleave=()=>el.classList.remove('feedback-hover');el.onclick=e=>{e.preventDefault();e.stopPropagation();const r=el.getBoundingClientRect();const ir=iframe.getBoundingClientRect();openPopover(slideId,el.id,ir.left+r.left+r.width/2,ir.top+r.top)}});renderMarkers(doc,slideId)}
+function renderMarkers(doc,slideId){doc.querySelectorAll('.feedback-marker').forEach(n=>n.remove());state.feedback.items.filter(i=>i.type==='comment'&&i.slide_id===slideId).forEach((it,idx)=>{const el=doc.getElementById(it.element_id);if(!el)return;const marker=doc.createElement('div');marker.className='feedback-marker';marker.textContent=idx+1;el.style.position=el.style.position||'relative';el.appendChild(marker)})}
+function openPopover(slideId,elementId,x,y){document.querySelector('.popover')?.remove();const p=document.createElement('div');p.className='popover';p.style.left=`${Math.min(x,innerWidth-320)}px`;p.style.top=`${Math.min(y,innerHeight-170)}px`;p.innerHTML=`<strong>${elementId}</strong><textarea placeholder="What would you like Claude to change?"></textarea><div class="row"><button class="ghost">Cancel</button><button class="save">Save</button></div>`;document.body.appendChild(p);p.querySelector('.ghost').onclick=()=>p.remove();p.querySelector('.save').onclick=()=>{const comment=p.querySelector('textarea').value.trim();if(comment)addItem({type:'comment',slide_id:slideId,element_id:elementId,comment});p.remove()};p.querySelector('textarea').onkeydown=e=>{if(e.key==='Escape')p.remove();if(e.key==='Enter'&&(e.metaKey||e.ctrlKey))p.querySelector('.save').click()};p.querySelector('textarea').focus()}
+async function addItem(item){state.feedback.items.push({id:`fb-${Date.now()}`,created_at:new Date().toISOString(),...item});await saveFeedback();renderQueue();renderFrame();status()}
+async function saveFeedback(){await fetch('/save-feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(state.feedback,null,2)})}
+function renderQueue(){queue.innerHTML='';state.feedback.items.forEach((it,idx)=>{const d=document.createElement('div');d.className='item';const text=it.comment||it.prompt||it.palette||it.new_template||it.new_viz||(it.new_order?`${it.new_order.length} slides`:'');d.innerHTML=`<small>${it.type} · ${it.slide_id||''} ${it.element_id||''}</small><div>${text}</div><button class="danger">Delete</button>`;d.querySelector('button').onclick=async e=>{e.stopPropagation();state.feedback.items.splice(idx,1);await saveFeedback();render()};d.onclick=()=>{if(it.slide_id&&state.deck.slides.includes(it.slide_id)){state.index=state.deck.slides.indexOf(it.slide_id);render()}};queue.appendChild(d)})}
+function status(){document.getElementById('status').textContent=`${state.feedback.items.length} items in queue. Run "apply feedback" in your coding agent to process.`}
+palette.onchange=()=>addItem({type:'theme_change',palette:palette.value});templateSwap.onchange=()=>addItem({type:'template_swap',slide_id:currentSlide(),new_template:templateSwap.value});vizSwap.onchange=()=>{if(vizSwap.value)addItem({type:'viz_override',slide_id:currentSlide(),new_viz:vizSwap.value})};saveOrder.onclick=()=>addItem({type:'slide_reorder',new_order:[...state.deck.slides]});addSlide.onclick=()=>{const prompt=window.prompt('What should this slide cover?');if(prompt)addItem({type:'slide_add',after_slide_id:currentSlide(),prompt})};prev.onclick=()=>{state.index=Math.max(0,state.index-1);render()};next.onclick=()=>{state.index=Math.min(state.deck.slides.length-1,state.index+1);render()};load();
+</script>
+</body>
+</html>
