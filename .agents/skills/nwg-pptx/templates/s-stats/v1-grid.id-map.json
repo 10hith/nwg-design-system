@@ -1,0 +1,17 @@
+{
+  "template": "s-stats/v1-grid",
+  "elements": [
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    },
+    {
+      "selector": "[data-role=\"group-1-title\"]",
+      "role": "group-1-title"
+    },
+    {
+      "selector": "[data-role=\"group-2-title\"]",
+      "role": "group-2-title"
+    }
+  ]
+}

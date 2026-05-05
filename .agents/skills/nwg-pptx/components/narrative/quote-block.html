@@ -1,0 +1,12 @@
+<!-- quote-block | narrative | Oversized display quote mark, pull-quote text, and attribution line -->
+<style>
+.quote-block{position:relative;padding:28px 32px 28px 70px}
+.quote-block::before{content:'\201C';position:absolute;left:16px;top:10px;font-family:var(--display);font-size:120px;color:var(--gold);line-height:1;opacity:.8}
+.quote-block__text{font-family:var(--display);font-size:26px;font-weight:700;color:var(--p800);line-height:1.3;margin:0 0 16px}
+.quote-block__attribution{font-size:14px;color:var(--n500);margin:0;font-style:italic}
+</style>
+<!-- UX_ANNOTATION_SLOT -->
+<div class="quote-block">
+  <p class="quote-block__text" data-slot="quote">There are no upfront fees or commitments. You pay only for the amount of data you store.</p>
+  <p class="quote-block__attribution" data-slot="attribution">— AWS ECR Pricing</p>
+</div>

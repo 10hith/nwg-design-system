@@ -1,0 +1,17 @@
+{
+  "template": "s-3col/v1-icon-bullets",
+  "elements": [
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    },
+    {
+      "selector": "[data-role=\"banner\"]",
+      "role": "banner"
+    },
+    {
+      "selector": "[data-role=\"footer\"]",
+      "role": "footer"
+    }
+  ]
+}

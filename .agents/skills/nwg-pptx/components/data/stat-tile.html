@@ -1,0 +1,13 @@
+<!-- stat-tile | data | Editorial-scale metric: big number and label in a bordered card -->
+<style>
+.stat-tile{background:var(--p050);border:1px solid var(--p200);border-radius:16px;padding:28px 26px 22px;display:flex;flex-direction:column}
+.stat-tile__accent{width:40px;height:4px;background:var(--gold);border-radius:2px;margin-bottom:18px}
+.stat-tile__value{font-family:var(--display);font-size:58px;font-weight:800;color:var(--p800);line-height:1;margin:0 0 10px}
+.stat-tile__label{font-size:15px;color:var(--n700);margin:0;line-height:1.4}
+</style>
+<!-- UX_ANNOTATION_SLOT -->
+<div class="stat-tile">
+  <div class="stat-tile__accent"></div>
+  <p class="stat-tile__value" data-slot="value">$0.10</p>
+  <p class="stat-tile__label" data-slot="label">per GB / month · ECR Standard</p>
+</div>

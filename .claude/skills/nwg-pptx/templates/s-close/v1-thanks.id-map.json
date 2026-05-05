@@ -1,0 +1,17 @@
+{
+  "template": "s-close/v1-thanks",
+  "elements": [
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    },
+    {
+      "selector": "[data-role=\"subtitle\"]",
+      "role": "subtitle"
+    },
+    {
+      "selector": "[data-role=\"body\"]",
+      "role": "body"
+    }
+  ]
+}

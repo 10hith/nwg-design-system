@@ -1,0 +1,26 @@
+<!-- data-table | data | Compact table with dark header and tinted alternate rows -->
+<style>
+.data-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;border:1px solid var(--p200)}
+.data-table thead tr{background:var(--p800);color:var(--n0)}
+.data-table thead th{padding:14px 18px;font-size:13px;font-weight:800;text-align:left;letter-spacing:.04em}
+.data-table tbody tr:nth-child(even){background:var(--p050)}
+.data-table tbody tr:nth-child(odd){background:var(--n0)}
+.data-table td{padding:13px 18px;font-size:15px;color:var(--p900);border-top:1px solid var(--p100)}
+.data-table td:first-child{font-weight:700;color:var(--p800)}
+</style>
+<!-- UX_ANNOTATION_SLOT -->
+<table class="data-table">
+  <thead>
+    <tr>
+      <th data-slot="col-1">Storage Class</th>
+      <th data-slot="col-2">Tier</th>
+      <th data-slot="col-3">Price / GB / month</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td data-slot="row">ECR Standard</td><td>All storage</td><td>$0.10</td></tr>
+    <tr><td data-slot="row">ECR Archive</td><td>First 150 TB</td><td>$0.10</td></tr>
+    <tr><td data-slot="row">ECR Archive</td><td>Over 150 TB</td><td>$0.07</td></tr>
+    <tr><td data-slot="row">Archive Retrieval</td><td>Per GB retrieved</td><td>$0.03</td></tr>
+  </tbody>
+</table>

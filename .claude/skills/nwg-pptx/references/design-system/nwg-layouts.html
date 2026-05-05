@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NWG Layout Gallery · 12 archetypes</title>
+
+<style>
+:root{
+  --p900:#2B0A4A; --p800:#3D0F66; --p700:#4F1783; --p600:#5E1B9C; --p500:#7B2CBF;
+  --p400:#9D5BD6; --p300:#BD91E5; --p200:#D9BDF0; --p100:#ECDCF7; --p050:#F7EFFC;
+  --gold:#FDAB1F;
+  --n0:#fff; --n100:#F3F3F5; --n300:#D7D7DE; --n500:#8C8C97; --n700:#4E4E5A; --n900:#1F1B2E;
+  --ok:#4FA86A; --warn:#F3A73A; --danger:#E43E6E;
+  --display:"Zilla Slab","Roboto Slab",Georgia,serif;
+  --body:"Nunito Sans","Mulish","Open Sans",-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#F3F1F7;color:var(--p900);font-family:var(--body);font-size:14px}
+
+.page-head{max-width:1320px;margin:0 auto;padding:48px 32px 24px}
+.page-head h1{font-family:var(--display);font-size:40px;font-weight:800;margin:0;color:var(--p800)}
+.page-head p{color:var(--n700);max-width:760px}
+
+.gallery{max-width:1320px;margin:0 auto;padding:16px 32px 96px}
+.slot{margin-bottom:48px}
+.slot-hd{display:flex;align-items:baseline;justify-content:space-between;margin:6px 4px 12px;gap:12px;flex-wrap:wrap}
+.slot-hd .num{font-family:var(--display);color:var(--p700);font-size:18px;font-weight:800}
+.slot-hd .name{font-family:var(--display);color:var(--p900);font-size:22px;font-weight:800;flex:1}
+.slot-hd .tag{background:var(--p100);color:var(--p800);padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.slot-hd .note{flex-basis:100%;color:var(--n700);font-size:13px;margin-top:2px}
+
+/* slide chrome */
+.slide{
+  width:100%;aspect-ratio:16/9;max-width:1280px;margin:0 auto;
+  background:#fff;border-radius:14px;overflow:hidden;position:relative;
+  box-shadow:0 1px 2px rgba(43,10,74,.06),0 12px 30px rgba(43,10,74,.08);
+  font-size:13px;
+}
+.slide .pgnum{position:absolute;right:14px;bottom:10px;font-size:10px;color:var(--n500)}
+.slide .logo{position:absolute;right:22px;top:22px;width:36px;height:36px;border-radius:8px;background:var(--p800);display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.05em}
+.slide h1.title{font-family:var(--display);font-size:28px;font-weight:800;color:var(--p800);margin:0 0 14px;line-height:1.15}
+.slide h2.kicker{font-family:var(--display);font-size:16px;font-weight:700;color:var(--p700);margin:0 0 10px}
+
+/* --- SLIDE 1: COVER --- */
+.s-cover{display:grid;grid-template-columns:45% 55%}
+.s-cover .hero-img{background:
+  linear-gradient(135deg,rgba(61,15,102,.6),rgba(94,27,156,.3)),
+  radial-gradient(circle at 30% 30%,#7B2CBF,transparent 50%),
+  radial-gradient(circle at 70% 70%,#FDAB1F55,transparent 40%),
+  linear-gradient(45deg,#3D0F66,#7B2CBF);
+  border-radius:0 20px 20px 0;
+}
+.s-cover .panel{background:var(--p700);color:#fff;padding:60px 54px;display:flex;flex-direction:column;justify-content:center}
+.s-cover .panel h1{font-family:var(--display);font-size:44px;font-weight:800;margin:0 0 14px;line-height:1.05}
+.s-cover .panel .sub{font-family:var(--display);font-size:22px;font-weight:700;margin:0;line-height:1.2}
+.s-cover .panel .date{margin-top:22px;font-size:15px;opacity:.85}
+.s-cover .underline{height:3px;width:80px;background:var(--gold);margin:6px 0 14px;border-radius:2px}
+
+/* --- SLIDE 2: SECTION DIVIDER --- */
+.s-section{display:grid;grid-template-columns:45% 55%}
+.s-section .img{background:
+  linear-gradient(160deg,#58AFE6 0%,#9ECDF2 40%,#4F8CBF 100%);
+  border-radius:0 24px 0 0;
+  position:relative;
+}
+.s-section .img:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 80%,#FDAB1F 0 60px,transparent 62px)}
+.s-section .panel{background:var(--p700);color:#fff;padding:0 54px;display:flex;flex-direction:column;justify-content:center}
+.s-section .panel .t{font-family:var(--display);font-size:44px;font-weight:800;margin:0}
+.s-section .panel .n{font-family:var(--display);font-size:28px;font-weight:800;margin:22px 0 4px}
+.s-section .panel .r{font-size:14px;font-weight:700;margin:0;opacity:.9}
+
+/* --- SLIDE 3: AGENDA --- */
+.s-agenda{display:grid;grid-template-columns:44% 56%;height:100%}
+.s-agenda .left{background:var(--p700);color:#fff;padding:36px 34px}
+.s-agenda .left h2{font-family:var(--display);font-size:24px;margin:0 0 18px;font-weight:800}
+.s-agenda .presenter{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+.s-agenda .avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#CDBDE2,#9D5BD6);flex:0 0 58px}
+.s-agenda .presenter .name{font-family:var(--display);font-weight:800;font-size:16px;margin:0}
+.s-agenda .presenter .role{font-size:12px;opacity:.85;margin:0}
+.s-agenda .right{padding:42px 48px}
+.s-agenda .right h2{font-family:var(--display);font-size:22px;color:var(--p800);margin:0 0 22px;text-align:center;font-weight:800}
+.s-agenda .aitem{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:18px;margin-bottom:14px}
+.s-agenda .aitem .n{font-family:var(--display);font-size:32px;font-weight:800;color:var(--p800);text-align:right}
+.s-agenda .aitem .t{background:var(--p100);color:var(--p800);padding:14px 18px;border-radius:10px;font-weight:800;text-align:center}
+
+/* --- SLIDE 4: STATEMENT STACK --- */
+.s-stack{padding:46px 56px}
+.chk{display:flex;align-items:center;gap:18px;padding:14px 22px;border-radius:999px;background:var(--p100);border:1px solid var(--p200);color:var(--p800);font-style:italic;font-weight:700;margin-bottom:12px}
+.chk .ring{flex:0 0 32px;width:32px;height:32px;border:2px solid var(--p700);border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--p700);font-style:normal}
+
+/* --- SLIDE 5: 3-COL PILLARS --- */
+.s-3col{padding:42px 54px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:12px;overflow:hidden;margin-top:10px;border:1px solid var(--p200)}
+.pillars .hd{background:var(--p700);color:#fff;padding:10px 16px;text-align:center;font-weight:800;grid-column:1 / -1;font-size:14px}
+.pillars .col{padding:20px 20px 22px;background:#fff}
+.pillars .col + .col{border-left:1px dashed var(--p300)}
+.pillars .head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.pillars .ico{width:40px;height:40px;border-radius:8px;background:var(--p050);border:1px solid var(--p200);display:grid;place-items:center;color:var(--p700)}
+.pillars .ico svg{width:22px;height:22px}
+.pillars h3{font-family:var(--display);margin:0;font-size:16px;color:var(--p800);font-weight:800;line-height:1.2}
+.pillars ul{margin:8px 0 0;padding-left:18px;color:var(--p900);font-size:12.5px;line-height:1.45}
+.pillars ul li{margin-bottom:6px}
+.s-3col .footer-banner{margin-top:16px;background:var(--p700);color:#fff;padding:12px 20px;border-radius:10px;font-weight:800;text-align:center}
+
+/* --- SLIDE 6: COMPARISON MATRIX --- */
+.s-matrix{padding:40px 44px}
+.matrix{display:grid;grid-template-columns:170px repeat(3,1fr);gap:10px;margin-top:10px}
+.matrix .rowlab{background:var(--p100);color:var(--p800);border-radius:10px;padding:10px 14px;font-weight:700;font-size:12px;display:grid;place-items:center;text-align:center}
+.matrix .cell{background:var(--p050);border:1px solid var(--p200);border-radius:10px;padding:10px 12px;text-align:center;color:var(--p800);font-weight:700;font-size:12.5px}
+.matrix .cell.dark{background:var(--p700);color:#fff;border-color:var(--p700)}
+.matrix .colhd{background:var(--p050);border:1px solid var(--p200);border-radius:10px;padding:12px;text-align:center}
+.matrix .colhd.dark{background:var(--p700);color:#fff;border-color:var(--p700)}
+.matrix .colhd h4{font-family:var(--display);font-size:15px;margin:0 0 4px;font-weight:800}
+.matrix .colhd .sub{font-size:11px;opacity:.8;margin:0}
+
+/* --- SLIDE 7: STAT GRID with divider title --- */
+.s-stats{padding:44px 54px}
+.divh{display:flex;align-items:center;gap:14px;margin:10px 0 14px;color:var(--p800)}
+.divh:before,.divh:after{content:"";flex:1;height:1px;background:var(--p300)}
+.divh .dot{width:7px;height:7px;border-radius:50%;background:var(--p700)}
+.divh .txt{font-weight:800;font-size:14px}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat4{padding:14px 16px;border-radius:10px;background:var(--p050);border:1px solid var(--p200);text-align:left}
+.stat4 .n{font-family:var(--display);font-weight:800;color:var(--p700);font-size:32px;line-height:1;margin:0 0 6px}
+.stat4 .l{font-size:11.5px;color:var(--n700);margin:0}
+
+/* --- SLIDE 8: CHART + NARRATIVE --- */
+.s-chart{display:grid;grid-template-columns:48% 52%;height:100%}
+.s-chart .left{padding:42px 40px;background:var(--p050);border-right:1px solid var(--p200)}
+.s-chart .right{padding:42px 40px}
+.barchart{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end;height:200px;margin-top:8px}
+.barchart .b{background:var(--p300);border-radius:6px 6px 0 0;position:relative;text-align:center;font-weight:800;color:#fff;font-size:11px;padding-top:6px}
+.barchart .b.hi{background:var(--p700)}
+.barchart .b .cap{position:absolute;top:-22px;left:0;right:0;text-align:center;color:var(--p800);font-size:12px}
+.years{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;font-size:11px;color:var(--n700);text-align:center;margin-top:6px}
+.arrowrow{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start;margin-bottom:10px}
+.arrowrow .a{width:0;height:0;border:7px solid transparent;border-left-color:var(--p700);margin-top:4px}
+.arrowrow p{margin:0;color:var(--p900);font-size:12.5px;line-height:1.45}
+.arrowrow strong{color:var(--p700)}
+
+/* --- SLIDE 9: HUB & SPOKE (DONUT) --- */
+.s-hub{padding:36px 44px;display:grid;grid-template-columns:1fr 320px;gap:24px}
+.s-hub .txt{padding-top:16px}
+.s-hub .donut{position:relative;width:280px;height:280px;margin:auto;border-radius:50%;
+  background:
+    conic-gradient(
+      #3D0F66 0 25%,
+      #5E1B9C 25% 43%,
+      #7B2CBF 43% 58%,
+      #9D5BD6 58% 70%,
+      #BD91E5 70% 82%,
+      #D9BDF0 82% 100%
+    );
+}
+.s-hub .donut:before{content:"";position:absolute;inset:70px;background:#fff;border-radius:50%}
+.s-hub .donut .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.s-hub .donut .c .n{font-family:var(--display);font-size:26px;color:var(--p800);font-weight:800;line-height:1}
+.s-hub .donut .c .l{font-size:11px;color:var(--n700);margin-top:2px}
+.s-hub .legend{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px;margin-top:16px}
+.s-hub .legend span{display:flex;align-items:center;gap:6px}
+.s-hub .legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.s-hub .callouts{display:grid;gap:10px;padding-top:4px}
+.s-hub .co{background:var(--p050);border:1px solid var(--p200);border-radius:10px;padding:10px 14px}
+.s-hub .co h4{font-family:var(--display);margin:0 0 2px;font-size:13px;color:var(--p800)}
+.s-hub .co p{margin:0;font-size:12px;color:var(--n700)}
+
+/* --- SLIDE 10: PROCESS / JOURNEY --- */
+.s-process{padding:40px 48px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.step-hd{background:var(--p700);color:#fff;padding:10px 14px;border-radius:10px;text-align:center}
+.step-hd .d{font-size:11px;opacity:.85}
+.step-hd h4{font-family:var(--display);font-size:14px;margin:2px 0 0;font-weight:800}
+.step-body{padding:14px 14px 0;color:var(--p900);font-size:12.5px;line-height:1.45;min-height:64px}
+.step-pic{height:64px;background:linear-gradient(135deg,#ECDCF7,#BD91E5);border-radius:8px;margin:8px 0}
+.step-actions{background:var(--p100);border:1px solid var(--p200);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--p800);display:grid;grid-template-columns:80px 1fr;gap:8px;align-items:center;margin-top:6px}
+.step-actions .label{background:var(--p700);color:#fff;border-radius:6px;padding:10px 6px;text-align:center;font-weight:800;writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:.04em}
+
+/* --- SLIDE 11: HIERARCHY TREE --- */
+.s-tree{padding:38px 44px}
+.tree .parent{background:var(--p700);color:#fff;border-radius:10px;padding:12px 18px;text-align:center;font-family:var(--display);font-weight:800;font-size:15px;max-width:260px;margin:0 auto}
+.tree .line{height:20px;border-left:2px solid var(--p400);margin:0 auto;width:0}
+.tree .children{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:6px}
+.tree .child{background:var(--p500);color:#fff;border-radius:10px;padding:10px 8px;text-align:center;font-weight:800;font-size:12px}
+.tree .child.focus{outline:2px solid var(--gold);outline-offset:2px}
+.tree .bracket{height:2px;background:var(--p400);margin:6px 20px 0;position:relative}
+.tree .bracket:before,.tree .bracket:after{content:"";position:absolute;top:0;width:2px;height:10px;background:var(--p400)}
+.tree .bracket:before{left:0}.tree .bracket:after{right:0}
+.tree .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.tree .g{background:var(--p100);border:1px solid var(--p200);border-radius:8px;padding:8px 12px;text-align:center;font-weight:700;color:var(--p800);font-size:12px}
+
+/* --- SLIDE 12: CLOSING / DISCLAIMER --- */
+.s-close{padding:46px 56px}
+.s-close h1{font-family:var(--display);font-size:30px;font-weight:800;color:var(--p800);margin:0 0 10px}
+.s-close .body{font-size:11.5px;color:var(--n700);line-height:1.5;column-count:2;column-gap:32px;margin-top:6px}
+.s-close .body p{margin:0 0 8px}
+.s-close h3{font-family:var(--display);font-size:14px;color:var(--p800);margin:12px 0 4px}
+
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>NWG Layout Gallery</h1>
+  <p>Twelve reusable slide archetypes observed across NatWest Group investor decks. Each shows the layout structure and the kinds of data it's best suited to. Use the names below as a shared vocabulary with AI agents.</p>
+</div>
+
+<div class="gallery">
+
+<!-- 01 COVER -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">01</span><span class="name">Cover / Title Slide</span>
+    <span class="tag">entry</span>
+    <span class="note">Best for: opening a presentation or chapter. Image panel + purple content panel, gold rule under title. Dual-logo footer when co-branded.</span>
+  </div>
+  <div class="slide s-cover">
+    <div class="hero-img"></div>
+    <div class="panel">
+      <div style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:4px">NatWest Group</div>
+      <h1>Investor Spotlight</h1>
+      <div class="underline"></div>
+      <div class="sub">Private Banking &amp; Wealth Management</div>
+      <div class="date">25 June 2025</div>
+    </div>
+    <div class="logo">NWG</div>
+    <div class="pgnum">1</div>
+  </div>
+</div>
+
+<!-- 02 SECTION DIVIDER -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">02</span><span class="name">Section Divider</span>
+    <span class="tag">transition</span>
+    <span class="note">Best for: introducing a chapter or presenter. Half-bleed image (rounded inside corner) + purple panel with title and speaker role.</span>
+  </div>
+  <div class="slide s-section">
+    <div class="img"></div>
+    <div class="panel">
+      <div class="t">Strategic Overview</div>
+      <div class="n">Emma Crystal</div>
+      <div class="r">Chief Executive Officer</div>
+    </div>
+    <div class="logo">NWG</div>
+    <div class="pgnum">2</div>
+  </div>
+</div>
+
+<!-- 03 AGENDA -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">03</span><span class="name">Agenda / Presenters</span>
+    <span class="tag">orientation</span>
+    <span class="note">Best for: welcome slide listing speakers and session order. Dark purple panel of presenter cards on the left, numbered agenda pills on the right.</span>
+  </div>
+  <div class="slide s-agenda">
+    <div class="left">
+      <h2>Your presenters</h2>
+      <div class="presenter"><div class="avatar"></div><div><p class="name">Paul Thwaite</p><p class="role">CEO, NatWest Group</p></div></div>
+      <div class="presenter"><div class="avatar" style="background:linear-gradient(135deg,#C9B1DB,#7B2CBF)"></div><div><p class="name">Emma Crystal</p><p class="role">CEO, PBWM</p></div></div>
+      <div class="presenter"><div class="avatar" style="background:linear-gradient(135deg,#B59AC9,#4F1783)"></div><div><p class="name">Jamel Oulidi</p><p class="role">COO, PBWM</p></div></div>
+    </div>
+    <div class="right">
+      <h2>Agenda</h2>
+      <div class="aitem"><div class="n">1</div><div class="t">Introduction</div></div>
+      <div class="aitem"><div class="n">2</div><div class="t">Strategic Overview and Growth</div></div>
+      <div class="aitem"><div class="n">3</div><div class="t">Simplification &amp; Balance Sheet</div></div>
+      <div class="aitem"><div class="n">4</div><div class="t">Key Takeaways and Q&amp;A</div></div>
+    </div>
+    <div class="pgnum">3</div>
+  </div>
+</div>
+
+<!-- 04 STATEMENT STACK -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">04</span><span class="name">Statement Stack</span>
+    <span class="tag">key messages</span>
+    <span class="note">Best for: executive summary — 3 to 5 parallel takeaways. Each is a pill-shaped card with a check ring and italic phrase. Do not exceed 5 rows.</span>
+  </div>
+  <div class="slide s-stack">
+    <h1 class="title">Creating the UK's #1 Private Bank and Wealth Manager</h1>
+    <div class="chk"><span class="ring">✓</span><span>Transforming our savings &amp; investments offering for our &gt;20 million customers</span></div>
+    <div class="chk"><span class="ring">✓</span><span>Accelerating delivery of our Group strategy in a structurally attractive growth market</span></div>
+    <div class="chk"><span class="ring">✓</span><span>Scales our business to ~20% of Group customer assets and liabilities, incl. £127bn AUMA</span></div>
+    <div class="chk"><span class="ring">✓</span><span>Increases Group fee income by ~20%, strengthening RoTE and capital generation</span></div>
+    <div class="chk"><span class="ring">✓</span><span>Higher return than a share buyback, with significant value from revenue and cost synergies</span></div>
+    <div class="pgnum">4</div>
+  </div>
+</div>
+
+<!-- 05 3-COL PILLARS -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">05</span><span class="name">3-Column Pillars</span>
+    <span class="tag">parallel categories</span>
+    <span class="note">Best for: 3–4 parallel strategic pillars or themes. Each column has a tinted icon, a slab-serif heading, and 3–5 bullets. Optional footer banner states the combined outcome.</span>
+  </div>
+  <div class="slide s-3col">
+    <h1 class="title">Our 2025–2027 strategic priorities to deliver returns</h1>
+    <div class="pillars">
+      <div class="hd">Our Ambition: Succeeding with Customers</div>
+      <div class="col">
+        <div class="head">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg></div>
+          <h3>Disciplined growth</h3>
+        </div>
+        <ul>
+          <li>Grow our three customer businesses</li>
+          <li>Improve share in target segments</li>
+          <li>Deepen engagement through personalisation</li>
+          <li>Assess value-accretive inorganic opportunities</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="head">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M6 12h12M9 17h6"/></svg></div>
+          <h3>Bank-wide simplification</h3>
+        </div>
+        <ul>
+          <li>Accelerate digitisation of customer journeys</li>
+          <li>Streamline and modernise tech estate</li>
+          <li>Accelerate data &amp; AI deployment</li>
+          <li>Simplify the operating model</li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="head">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z"/></svg></div>
+          <h3>Active balance sheet &amp; risk</h3>
+        </div>
+        <ul>
+          <li>Leverage strong capital and liquidity</li>
+          <li>Drive disciplined capital allocation</li>
+          <li>Recycle capital strategically</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-banner">2027 Return on Tangible Equity target of &gt;15%</div>
+    <div class="pgnum">5</div>
+  </div>
+</div>
+
+<!-- 06 COMPARISON MATRIX -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">06</span><span class="name">Comparison Matrix</span>
+    <span class="tag">multi-entity × attribute</span>
+    <span class="note">Best for: comparing 2–4 business units or options across the same set of attributes. Row labels sit in the left gutter; the column you're emphasising gets the dark fill.</span>
+  </div>
+  <div class="slide s-matrix">
+    <h1 class="title">Leading positions across our three businesses</h1>
+    <div class="matrix">
+      <div></div>
+      <div class="colhd"><h4>Retail Banking</h4><p class="sub">Youth to mass affluent</p></div>
+      <div class="colhd"><h4>Private Banking &amp; Wealth</h4><p class="sub">Affluent to high net-worth</p></div>
+      <div class="colhd dark"><h4>Commercial &amp; Institutional</h4><p class="sub">Start-ups to large corporates</p></div>
+
+      <div class="rowlab">Multi-channel brands</div>
+      <div class="cell">18.1m customers</div>
+      <div class="cell">0.1m customers</div>
+      <div class="cell dark">1.5m customers</div>
+
+      <div class="rowlab">Market position</div>
+      <div class="cell">+82% Rooster youth</div>
+      <div class="cell">Award-winning UK Private bank</div>
+      <div class="cell dark">#1 for UK start-ups</div>
+
+      <div class="rowlab">Key KPIs</div>
+      <div class="cell">16.3% current accounts</div>
+      <div class="cell">£48.5bn AuMA</div>
+      <div class="cell dark">~25% deposits · ~20% lending</div>
+
+      <div class="rowlab">Returns</div>
+      <div class="cell">FY'24: 19.9% RoE</div>
+      <div class="cell">FY'24: 14.2% RoE</div>
+      <div class="cell dark">FY'24: 17.2% RoE</div>
+    </div>
+    <div class="pgnum">6</div>
+  </div>
+</div>
+
+<!-- 07 STAT GRID -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">07</span><span class="name">Stat Grid</span>
+    <span class="tag">independent KPIs</span>
+    <span class="note">Best for: 3–8 independent KPIs that reinforce the same argument. Use the decorative divider rules with end-dots to sub-label groups (e.g. "Progress to date").</span>
+  </div>
+  <div class="slide s-stats">
+    <h1 class="title">Commercial Mid-Market: engine of UK growth</h1>
+    <div class="divh"><span class="dot"></span><span class="txt">Progress to date</span><span class="dot"></span></div>
+    <div class="statgrid">
+      <div class="stat4"><p class="n">~27%</p><p class="l">Market share for businesses with turnover &gt;£2m</p></div>
+      <div class="stat4"><p class="n">&gt;£7bn</p><p class="l">Social Housing lending since 2023</p></div>
+      <div class="stat4"><p class="n">~90%</p><p class="l">Reduction in spot FX onboarding time</p></div>
+      <div class="stat4"><p class="n">1<sup>st</sup></p><p class="l">UK bank to offer IP-backed loans</p></div>
+    </div>
+    <div class="divh"><span class="dot"></span><span class="txt">2025–2027 priorities</span><span class="dot"></span></div>
+    <div class="statgrid">
+      <div class="stat4" style="background:var(--p100)"><p class="l" style="font-weight:800;color:var(--p800)">Disciplined growth</p><p class="l">Support SMEs &amp; Innovation Economy</p></div>
+      <div class="stat4" style="background:var(--p100)"><p class="l" style="font-weight:800;color:var(--p800)">Simplification</p><p class="l">Transform Bankline onto cloud</p></div>
+      <div class="stat4" style="background:var(--p100)"><p class="l" style="font-weight:800;color:var(--p800)">Risk management</p><p class="l">Scale SRTs, improve capital velocity</p></div>
+      <div class="stat4" style="background:var(--p700);color:#fff;border-color:var(--p700)"><p class="l" style="font-weight:800;color:#fff">2027 target</p><p class="l" style="color:rgba(255,255,255,.85)">Group RoTE &gt;15%</p></div>
+    </div>
+    <div class="pgnum">7</div>
+  </div>
+</div>
+
+<!-- 08 CHART + NARRATIVE -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">08</span><span class="name">Chart + Narrative</span>
+    <span class="tag">trend / quant evidence</span>
+    <span class="note">Best for: pairing a single chart with a short narrative of 2–4 supporting points. Chart sits in the tinted left panel; narrative uses arrow-bullets on the right.</span>
+  </div>
+  <div class="slide s-chart">
+    <div class="left">
+      <h2 class="kicker">UK wealth market is growing ahead of GDP</h2>
+      <div class="barchart">
+        <div class="b" style="height:40%"><div class="cap">1.7</div></div>
+        <div class="b" style="height:60%"><div class="cap">2.3</div></div>
+        <div class="b hi" style="height:80%"><div class="cap">2.9</div></div>
+        <div class="b hi" style="height:95%"><div class="cap">3.4</div></div>
+      </div>
+      <div class="years"><span>2019</span><span>2024</span><span>2029F</span><span>2034F</span></div>
+      <div style="display:flex;gap:20px;margin-top:18px">
+        <span style="background:var(--p700);color:#fff;padding:6px 12px;border-radius:999px;font-weight:800;font-size:11px">CAGR 2025–29: 8–10%</span>
+        <span style="background:var(--p100);color:var(--p800);padding:6px 12px;border-radius:999px;font-weight:800;font-size:11px">Direct-to-Consumer</span>
+      </div>
+    </div>
+    <div class="right">
+      <h1 class="title" style="font-size:22px">Significant customer needs and tailwinds</h1>
+      <div class="arrowrow"><div class="a"></div><p><strong>Favourable demographics</strong> — UK household wealth peaks around retirement age, a cohort projected to grow by 7% by 2030.</p></div>
+      <div class="arrowrow"><div class="a"></div><p><strong>Significant advice gap</strong> — 40% of individuals under-saving for retirement; only ~8% of UK adults receiving regulated advice.</p></div>
+      <div class="arrowrow"><div class="a"></div><p><strong>Technology amplifies growth</strong> — AI supports seamless transition between digital and human-led interactions.</p></div>
+      <div class="arrowrow"><div class="a"></div><p><strong>Rising financial literacy</strong> — younger and mass-affluent clients increasingly engaged (D2C).</p></div>
+    </div>
+    <div class="pgnum">8</div>
+  </div>
+</div>
+
+<!-- 09 HUB & SPOKE -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">09</span><span class="name">Hub &amp; Spoke (Donut)</span>
+    <span class="tag">part-to-whole</span>
+    <span class="note">Best for: showing the composition of a single total (portfolio, revenue, customer base). Central donut carries the headline number; surrounding callouts explain the slices.</span>
+  </div>
+  <div class="slide s-hub">
+    <div class="txt">
+      <h1 class="title">£74bn of loans — diversified across sectors</h1>
+      <div class="callouts">
+        <div class="co"><h4>Commercial Real Estate — 19%</h4><p>4% of Group lending; stable margins.</p></div>
+        <div class="co"><h4>Housing Associations — 15%</h4><p>Leading lender to UK social housing.</p></div>
+        <div class="co"><h4>Mobility &amp; Logistics — 13%</h4><p>EV fleet financing scaling rapidly.</p></div>
+        <div class="co"><h4>Consumer Industries — 12%</h4><p>Broad exposure across FMCG.</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="donut">
+        <div class="c"><div><div class="n">£74bn</div><div class="l">Loans to customers</div></div></div>
+      </div>
+      <div class="legend">
+        <span><i style="background:#3D0F66"></i>CRE 19%</span>
+        <span><i style="background:#5E1B9C"></i>Housing 15%</span>
+        <span><i style="background:#7B2CBF"></i>Mobility 13%</span>
+        <span><i style="background:#9D5BD6"></i>Consumer 12%</span>
+        <span><i style="background:#BD91E5"></i>Public 9%</span>
+        <span><i style="background:#D9BDF0"></i>Other</span>
+      </div>
+    </div>
+    <div class="pgnum">9</div>
+  </div>
+</div>
+
+<!-- 10 PROCESS / JOURNEY -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">10</span><span class="name">Process / Journey</span>
+    <span class="tag">sequential / time-based</span>
+    <span class="note">Best for: case studies, customer journeys, or multi-year evolutions. 3 stepped cards with date ranges, short narrative, and a vertical NWG-actions panel beneath.</span>
+  </div>
+  <div class="slide s-process">
+    <h1 class="title">Our relationship with Zenobē has evolved over 5 years</h1>
+    <div class="steps">
+      <div>
+        <div class="step-hd"><div class="d">2020 – 2021</div><h4>Innovative Problem Solving</h4></div>
+        <div class="step-body">Zenobē is an SME that needs capital to support its ambitions — liquidity is limited.</div>
+        <div class="step-pic"></div>
+      </div>
+      <div>
+        <div class="step-hd"><div class="d">2021 – 2023</div><h4>Scaling business in Europe</h4></div>
+        <div class="step-body">Funding platform scales; grid-scale battery storage project financing.</div>
+        <div class="step-pic" style="background:linear-gradient(135deg,#BD91E5,#7B2CBF)"></div>
+      </div>
+      <div>
+        <div class="step-hd"><div class="d">2023 – 2025</div><h4>A trusted advisor in growth</h4></div>
+        <div class="step-body">Zenobē returns for additional UK and international expansion financing.</div>
+        <div class="step-pic" style="background:linear-gradient(135deg,#9D5BD6,#3D0F66)"></div>
+      </div>
+    </div>
+    <div class="steps" style="margin-top:10px">
+      <div class="step-actions"><div class="label">NWG actions</div><div>Structured £20m funding in EV market; ancillary FX services for GBP/AUD.</div></div>
+      <div class="step-actions"><div class="label">NWG actions</div><div>Sole advisor on ~£240m financing; coordinated hedging since 2022.</div></div>
+      <div class="step-actions"><div class="label">NWG actions</div><div>Advised on additional £410m financing; battery storage upsized to ~£280m.</div></div>
+    </div>
+    <div class="pgnum">10</div>
+  </div>
+</div>
+
+<!-- 11 HIERARCHY TREE -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">11</span><span class="name">Hierarchy Tree</span>
+    <span class="tag">org / taxonomy</span>
+    <span class="note">Best for: showing how a parent entity expands into segments and a flat product grid beneath. Use the gold outline to highlight the focus child when one item leads the argument.</span>
+  </div>
+  <div class="slide s-tree">
+    <h1 class="title">Commercial Mid-Market: delivering local expertise to a broad customer base</h1>
+    <div class="tree">
+      <div class="parent">Commercial Mid-Market</div>
+      <div class="line"></div>
+      <div class="bracket"></div>
+      <div class="children">
+        <div class="child">Large SME<br><span style="font-weight:400;font-size:11px;opacity:.85">£750k – £2m</span></div>
+        <div class="child">Small Commercial<br><span style="font-weight:400;font-size:11px;opacity:.85">£2m – £6.5m</span></div>
+        <div class="child">Large Commercial<br><span style="font-weight:400;font-size:11px;opacity:.85">£6.5m – £25m</span></div>
+        <div class="child focus">Mid Corporate<br><span style="font-weight:400;font-size:11px;opacity:.85">£25m – £500m</span></div>
+        <div class="child">Regional Large<br><span style="font-weight:400;font-size:11px;opacity:.85">£500m+</span></div>
+      </div>
+      <div style="margin-top:16px;color:var(--p800);font-weight:800;font-size:13px">Products we offer (not exhaustive)</div>
+      <div class="grid">
+        <div class="g">Term Lending</div>
+        <div class="g">Deposits</div>
+        <div class="g">Transaction Banking &amp; Payments</div>
+        <div class="g">CRE &amp; Housing Finance</div>
+        <div class="g">Overdrafts</div>
+        <div class="g">Merchant Acquiring</div>
+        <div class="g">Asset Finance</div>
+        <div class="g">Invoice Finance</div>
+        <div class="g">Cards</div>
+      </div>
+    </div>
+    <div class="pgnum">11</div>
+  </div>
+</div>
+
+<!-- 12 CLOSING -->
+<div class="slot">
+  <div class="slot-hd">
+    <span class="num">12</span><span class="name">Closing / Disclaimer</span>
+    <span class="tag">closing</span>
+    <span class="note">Best for: footnotes, forward-looking statements, or the disclaimer slide. Small-text, two-column prose; purple H1; no decorative elements.</span>
+  </div>
+  <div class="slide s-close">
+    <h1>Disclaimer</h1>
+    <h3>Forward-looking statements</h3>
+    <div class="body">
+      <p>The guidance, targets, expectations and trends discussed in this presentation represent NatWest Group management's current expectations and are subject to change, including as a result of the factors described in the "Risk Factors" in the most recent Annual Report.</p>
+      <p>This presentation may include forward-looking statements within the meaning of the United States Private Securities Litigation Reform Act of 1995. Words such as "expect", "estimate", "project", "anticipate", and similar expressions identify forward-looking statements.</p>
+      <p>Factors that could cause actual results to differ include future growth initiatives, level of future impairments and write-downs, legislative and fiscal developments, accounting standards, technological developments, exposure to third-party and operational risk, and the impact of climate-related risks.</p>
+      <p>The forward-looking statements contained herein speak only as of the date of this presentation. NatWest Group plc does not assume any obligation to update these statements, except to the extent legally required.</p>
+    </div>
+    <div class="pgnum">12</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

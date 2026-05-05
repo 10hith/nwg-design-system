@@ -1,0 +1,9 @@
+{
+  "template": "s-stack/v1-default",
+  "elements": [
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    }
+  ]
+}

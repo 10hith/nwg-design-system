@@ -1,0 +1,13 @@
+{
+  "template": "s-chart/v1-narrative",
+  "elements": [
+    {
+      "selector": "[data-role=\"kicker\"]",
+      "role": "kicker"
+    },
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    }
+  ]
+}

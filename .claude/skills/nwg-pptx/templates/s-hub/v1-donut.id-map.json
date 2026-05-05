@@ -1,0 +1,21 @@
+{
+  "template": "s-hub/v1-donut",
+  "elements": [
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    },
+    {
+      "selector": "[data-role=\"chart\"]",
+      "role": "chart"
+    },
+    {
+      "selector": "[data-role=\"center-value\"]",
+      "role": "center-value"
+    },
+    {
+      "selector": "[data-role=\"center-label\"]",
+      "role": "center-label"
+    }
+  ]
+}

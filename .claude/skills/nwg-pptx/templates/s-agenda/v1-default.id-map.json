@@ -1,0 +1,13 @@
+{
+  "template": "s-agenda/v1-default",
+  "elements": [
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    },
+    {
+      "selector": "[data-role=\"agenda-title\"]",
+      "role": "agenda-title"
+    }
+  ]
+}

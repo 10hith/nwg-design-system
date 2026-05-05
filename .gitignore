@@ -1,3 +1,2 @@
-.agents/
-.claude/
-.windsurf/
+node_modules/
+decks/

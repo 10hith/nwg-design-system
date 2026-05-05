@@ -1,0 +1,15 @@
+<!-- grid-2col | structural | 2-column layout scaffold: dark left panel and light right panel -->
+<style>
+.grid-2col{display:grid;grid-template-columns:1fr 1fr;height:100%}
+.grid-2col__left{background:var(--p800);color:var(--n0);padding:64px 56px}
+.grid-2col__right{background:var(--n0);padding:64px 56px}
+</style>
+<!-- UX_ANNOTATION_SLOT -->
+<div class="grid-2col">
+  <div class="grid-2col__left" data-slot="left">
+    <!-- Left panel content: hero-band, kicker-label, title-block, stat-tile, etc. -->
+  </div>
+  <div class="grid-2col__right" data-slot="right">
+    <!-- Right panel content: bullet-row, callout-card, data-table, inline-chart, etc. -->
+  </div>
+</div>

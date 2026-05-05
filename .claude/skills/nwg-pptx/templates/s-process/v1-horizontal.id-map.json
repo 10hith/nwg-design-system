@@ -1,0 +1,9 @@
+{
+  "template": "s-process/v1-horizontal",
+  "elements": [
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    }
+  ]
+}

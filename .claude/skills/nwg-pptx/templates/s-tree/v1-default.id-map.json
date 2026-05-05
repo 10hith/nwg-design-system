@@ -1,0 +1,17 @@
+{
+  "template": "s-tree/v1-default",
+  "elements": [
+    {
+      "selector": "[data-role=\"title\"]",
+      "role": "title"
+    },
+    {
+      "selector": "[data-role=\"parent\"]",
+      "role": "parent"
+    },
+    {
+      "selector": "[data-role=\"grid-title\"]",
+      "role": "grid-title"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+- All variants must use only NWG tokens from `_shared/nwg-tokens.css` (no hand-coded colors or fonts).
+- All variants must satisfy the 4 hard PPTX-export constraints from `pptx/editing.md` (block layout grammar that `html2pptx.js` can translate into editable text frames).
+- Variants differ in **composition** (which slots, how the grid divides, which elements present), not in token system or typography.
+- Each variant ships with a sibling `*.id-map.json` declaring its role-class → ID mapping, generated once when the variant is authored.

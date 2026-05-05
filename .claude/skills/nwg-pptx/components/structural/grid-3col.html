@@ -1,0 +1,11 @@
+<!-- grid-3col | structural | Equal 3-column content scaffold with consistent gap -->
+<style>
+.grid-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-3col__col{display:flex;flex-direction:column;gap:16px}
+</style>
+<!-- UX_ANNOTATION_SLOT -->
+<div class="grid-3col" data-slot="columns">
+  <div class="grid-3col__col"><!-- Column 1: any components --></div>
+  <div class="grid-3col__col"><!-- Column 2: any components --></div>
+  <div class="grid-3col__col"><!-- Column 3: any components --></div>
+</div>
