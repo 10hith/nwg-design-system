@@ -1,9 +1,0 @@
-{
-  "template": "s-matrix/v1-default",
-  "elements": [
-    {
-      "selector": "[data-role=\"title\"]",
-      "role": "title"
-    }
-  ]
-}
