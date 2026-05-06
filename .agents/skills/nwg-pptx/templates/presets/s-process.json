@@ -1,0 +1,15 @@
+{
+  "preset_id": "s-process",
+  "description": "Three-step process/timeline with action items below each step.",
+  "slots": ["title", "kicker", "step_items", "action_items"],
+  "components": [
+    { "type": "kicker-label", "box": { "x": 0.46, "y": 0.24, "w": 4.6, "h": 0.22 }, "props": { "text": "${kicker}" } },
+    { "type": "title-block",  "box": { "x": 0.46, "y": 0.44, "w": 9.2, "h": 0.75 }, "props": { "title": "${title}", "size": 27 } },
+    { "type": "callout-card", "box": { "x": 0.8, "y": 1.62, "w": 3.52, "h": 3.2  }, "props": "${step_items[0]}" },
+    { "type": "callout-card", "box": { "x": 4.85, "y": 1.62, "w": 3.52, "h": 3.2 }, "props": "${step_items[1]}" },
+    { "type": "callout-card", "box": { "x": 8.9, "y": 1.62, "w": 3.52, "h": 3.2  }, "props": "${step_items[2]}" },
+    { "type": "callout-card", "box": { "x": 0.8, "y": 5.1, "w": 3.52, "h": 0.72  }, "props": { "title": "", "body": "${action_items[0]}", "tone": "gold" } },
+    { "type": "callout-card", "box": { "x": 4.85, "y": 5.1, "w": 3.52, "h": 0.72 }, "props": { "title": "", "body": "${action_items[1]}", "tone": "gold" } },
+    { "type": "callout-card", "box": { "x": 8.9, "y": 5.1, "w": 3.52, "h": 0.72  }, "props": { "title": "", "body": "${action_items[2]}", "tone": "gold" } }
+  ]
+}

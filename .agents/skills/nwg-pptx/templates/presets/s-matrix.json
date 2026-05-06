@@ -1,0 +1,10 @@
+{
+  "preset_id": "s-matrix",
+  "description": "Comparison matrix: rows vs columns with highlighted column.",
+  "slots": ["title", "kicker", "matrix_data"],
+  "components": [
+    { "type": "kicker-label", "box": { "x": 0.46, "y": 0.24, "w": 4.6, "h": 0.22 }, "props": { "text": "${kicker}" } },
+    { "type": "title-block",  "box": { "x": 0.46, "y": 0.44, "w": 9.2, "h": 0.75 }, "props": { "title": "${title}", "size": 27 } },
+    { "type": "data-table",   "box": { "x": 0.9,  "y": 1.45, "w": 11.5, "h": 5.3  }, "props": { "headers": "${matrix_data.headers}", "rows": "${matrix_data.rows}" } }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "preset_id": "s-section",
+  "description": "Section divider: dark left panel with a large section number, light right with title.",
+  "slots": ["title", "section_number", "kicker"],
+  "components": [
+    { "type": "hero-band",      "box": { "x": 0,    "y": 0, "w": 3.0,  "h": 7.5 }, "props": { "title": "", "gradient": false } },
+    { "type": "section-number", "box": { "x": 0.55, "y": 0.62, "w": 1.9, "h": 1.5 }, "props": { "number": "${section_number}", "light": true } },
+    { "type": "kicker-label",   "box": { "x": 3.45, "y": 0.38, "w": 5.0, "h": 0.22 }, "props": { "text": "${kicker}" } },
+    { "type": "title-block",    "box": { "x": 3.45, "y": 1.8,  "w": 9.0, "h": 2.8  }, "props": { "title": "${title}", "size": 36 } }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "preset_id": "s-cover",
+  "description": "Full-width dark cover slide with gradient hero band, title, subtitle and date.",
+  "slots": ["title", "subtitle", "kicker", "date"],
+  "components": [
+    { "type": "hero-band",    "box": { "x": 0, "y": 0, "w": 13.333, "h": 7.5 },   "props": { "title": "${title}", "subtitle": "${subtitle}", "eyebrow": "${kicker}", "date": "${date}", "gradient": true, "title_size": 70 } },
+    { "type": "arc-accent",   "box": { "x": 8.8, "y": -0.4, "w": 4.6, "h": 4.6 }, "props": {} }
+  ]
+}

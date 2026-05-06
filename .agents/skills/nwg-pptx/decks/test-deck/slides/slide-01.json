@@ -1,0 +1,17 @@
+{
+  "id": "slide-01",
+  "title": "NWG Component Library",
+  "theme": { "palette": "nwg-purple-default" },
+  "components": [
+    {
+      "type": "hero-band",
+      "box": { "x": 0, "y": 0, "w": 13.333, "h": 7.5 },
+      "props": { "title": "NWG Component Library", "subtitle": "Architecture Review · May 2025", "eyebrow": "NatWest Group", "date": "Q2 2025", "gradient": true, "title_size": 70 }
+    },
+    {
+      "type": "arc-accent",
+      "box": { "x": 8.5, "y": -0.5, "w": 5.0, "h": 5.0 },
+      "props": {}
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "slide-06",
+  "title": "Thank You",
+  "theme": { "palette": "nwg-purple-default" },
+  "components": [
+    {
+      "type": "hero-band",
+      "box": { "x": 0, "y": 0, "w": 13.333, "h": 7.5 },
+      "props": { "title": "Thank You", "subtitle": "Questions & Discussion", "gradient": true, "title_size": 64 }
+    },
+    {
+      "type": "bullet-list",
+      "box": { "x": 0.85, "y": 4.6, "w": 11.5, "h": 1.8 },
+      "props": {
+        "light": true,
+        "items": [
+          "investor.relations@natwestgroup.com",
+          "Results presentation available at natwestgroup.com/results",
+          "Next results update: Q3 2025, October 2025"
+        ]
+      }
+    },
+    {
+      "type": "divider-bar",
+      "box": { "x": 0.85, "y": 6.65, "w": 11.5, "h": 0.04 },
+      "props": { "light": true }
+    }
+  ]
+}

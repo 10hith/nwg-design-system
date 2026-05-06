@@ -1,0 +1,13 @@
+{
+  "preset_id": "s-stats",
+  "description": "Two groups of 4 stat tiles each with group labels.",
+  "slots": ["title", "group_1_title", "stats_group_1", "group_2_title", "stats_group_2"],
+  "components": [
+    { "type": "title-block", "box": { "x": 0.46, "y": 0.38, "w": 9.4, "h": 0.75 }, "props": { "title": "${title}", "size": 27 } },
+    { "type": "icon-pill",   "box": { "x": 0.8,  "y": 1.5,  "w": 3.0,  "h": 0.34 }, "props": { "text": "${group_1_title}", "tone": "purple", "round": false } },
+    { "type": "stat-row",    "box": { "x": 0.8,  "y": 2.0,  "w": 12.0, "h": 1.55 }, "props": { "items": "${stats_group_1}" } },
+    { "type": "divider-bar", "box": { "x": 0.8,  "y": 3.8,  "w": 12.0, "h": 0.06 }, "props": {} },
+    { "type": "icon-pill",   "box": { "x": 0.8,  "y": 4.1,  "w": 3.0,  "h": 0.34 }, "props": { "text": "${group_2_title}", "tone": "purple", "round": false } },
+    { "type": "stat-row",    "box": { "x": 0.8,  "y": 4.6,  "w": 12.0, "h": 1.55 }, "props": { "items": "${stats_group_2}" } }
+  ]
+}

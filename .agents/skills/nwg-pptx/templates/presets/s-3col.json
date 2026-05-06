@@ -1,0 +1,12 @@
+{
+  "preset_id": "s-3col",
+  "description": "Three-column layout with banner and optional footer pill.",
+  "slots": ["title", "banner", "column_items", "footer"],
+  "components": [
+    { "type": "title-block",  "box": { "x": 0.46, "y": 0.38, "w": 9.4, "h": 0.7  }, "props": { "title": "${title}", "size": 27 } },
+    { "type": "icon-pill",    "box": { "x": 0.75, "y": 1.2,  "w": 11.85, "h": 0.34 }, "props": { "text": "${banner}", "tone": "purple", "round": false } },
+    { "type": "callout-card", "box": { "x": 0.75, "y": 1.75, "w": 3.7, "h": 4.6  }, "props": { "title": "${column_items[0].heading}", "body": "${column_items[0].bullets}", "tone": "neutral" } },
+    { "type": "callout-card", "box": { "x": 4.77, "y": 1.75, "w": 3.7, "h": 4.6  }, "props": { "title": "${column_items[1].heading}", "body": "${column_items[1].bullets}", "tone": "neutral" } },
+    { "type": "callout-card", "box": { "x": 8.79, "y": 1.75, "w": 3.7, "h": 4.6  }, "props": { "title": "${column_items[2].heading}", "body": "${column_items[2].bullets}", "tone": "neutral" } }
+  ]
+}

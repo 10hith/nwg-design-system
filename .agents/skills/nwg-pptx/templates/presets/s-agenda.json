@@ -1,0 +1,10 @@
+{
+  "preset_id": "s-agenda",
+  "description": "Agenda: left dark panel with presenter info, right with numbered agenda items.",
+  "slots": ["title", "presenter_items", "agenda_items"],
+  "components": [
+    { "type": "title-block",  "box": { "x": 0.46, "y": 0.4, "w": 9.0, "h": 0.75 }, "props": { "title": "${title}", "size": 30 } },
+    { "type": "callout-card", "box": { "x": 0.65, "y": 1.4, "w": 3.6, "h": 5.2  }, "props": { "title": "Presenters", "body": "${presenter_items}", "tone": "purple" } },
+    { "type": "bullet-list",  "box": { "x": 4.8,  "y": 1.5, "w": 7.8, "h": 5.2  }, "props": { "items": "${agenda_items}" } }
+  ]
+}

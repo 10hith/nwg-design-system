@@ -1,0 +1,54 @@
+{
+  "id": "slide-03",
+  "title": "Key Performance Metrics",
+  "theme": { "palette": "nwg-purple-default" },
+  "components": [
+    {
+      "type": "kicker-label",
+      "box": { "x": 0.46, "y": 0.32, "w": 5.0, "h": 0.22 },
+      "props": { "text": "Financial Overview" }
+    },
+    {
+      "type": "title-block",
+      "box": { "x": 0.46, "y": 0.58, "w": 9.0, "h": 0.75 },
+      "props": { "title": "Key Performance Metrics", "size": 28 }
+    },
+    {
+      "type": "stat-row",
+      "box": { "x": 0.46, "y": 1.55, "w": 12.4, "h": 1.6 },
+      "props": {
+        "items": [
+          { "value": "£14.8bn", "label": "Total Income", "sublabel": "vs £13.2bn prior year" },
+          { "value": "22.4%", "label": "RoTE", "sublabel": "target: >20%" },
+          { "value": "41.3%", "label": "Cost:Income Ratio", "sublabel": "improved 4pp YoY" },
+          { "value": "£7.2bn", "label": "Capital Return", "sublabel": "buybacks + dividends" }
+        ]
+      }
+    },
+    {
+      "type": "divider-bar",
+      "box": { "x": 0.46, "y": 3.45, "w": 12.4, "h": 0.04 },
+      "props": {}
+    },
+    {
+      "type": "callout-card",
+      "box": { "x": 0.46, "y": 3.65, "w": 6.0, "h": 2.6 },
+      "props": { "title": "Strategic Highlights", "body": "Strong NIM expansion across all three divisions. Mortgage book growth of 8% driven by first-time buyer volumes. Cost transformation programme delivered £400m savings ahead of plan.", "tone": "purple" }
+    },
+    {
+      "type": "metric-delta",
+      "box": { "x": 6.9, "y": 3.8, "w": 5.8, "h": 0.7 },
+      "props": { "value": "£4.1bn", "delta": "+12% YoY", "label": "Operating Profit", "direction": "up" }
+    },
+    {
+      "type": "metric-delta",
+      "box": { "x": 6.9, "y": 4.7, "w": 5.8, "h": 0.7 },
+      "props": { "value": "15.4%", "delta": "-1.2pp", "label": "CET1 Ratio", "direction": "down" }
+    },
+    {
+      "type": "quote-block",
+      "box": { "x": 6.9, "y": 5.55, "w": 5.8, "h": 0.9 },
+      "props": { "quote": "Our performance reflects the resilience of our diversified model.", "attribution": "CEO, Q2 Results" }
+    }
+  ]
+}

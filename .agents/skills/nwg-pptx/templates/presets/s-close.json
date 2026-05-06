@@ -1,0 +1,9 @@
+{
+  "preset_id": "s-close",
+  "description": "Dark closing slide with large title, subtitle, and optional follow-up paragraphs.",
+  "slots": ["title", "subtitle", "paragraphs"],
+  "components": [
+    { "type": "hero-band",   "box": { "x": 0, "y": 0, "w": 13.333, "h": 7.5 }, "props": { "title": "${title}", "subtitle": "${subtitle}", "gradient": true, "title_size": 64 } },
+    { "type": "bullet-list", "box": { "x": 0.85, "y": 4.6, "w": 11.5, "h": 2.0 }, "props": { "items": "${paragraphs}", "light": true } }
+  ]
+}

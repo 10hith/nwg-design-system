@@ -1,0 +1,13 @@
+{
+  "preset_id": "s-hub",
+  "description": "Donut/pie chart hub on left with callout cards on the right.",
+  "slots": ["title", "kicker", "chart_data", "callout_items"],
+  "components": [
+    { "type": "kicker-label",  "box": { "x": 0.46, "y": 0.24, "w": 4.6,  "h": 0.22 }, "props": { "text": "${kicker}" } },
+    { "type": "title-block",   "box": { "x": 0.46, "y": 0.44, "w": 8.8,  "h": 0.75 }, "props": { "title": "${title}", "size": 27 } },
+    { "type": "inline-chart",  "box": { "x": 0.85, "y": 1.45, "w": 5.2,  "h": 4.8  }, "props": "${chart_data}" },
+    { "type": "callout-card",  "box": { "x": 6.85, "y": 1.45, "w": 5.25, "h": 1.35 }, "props": "${callout_items[0]}" },
+    { "type": "callout-card",  "box": { "x": 6.85, "y": 2.95, "w": 5.25, "h": 1.35 }, "props": "${callout_items[1]}" },
+    { "type": "callout-card",  "box": { "x": 6.85, "y": 4.45, "w": 5.25, "h": 1.35 }, "props": "${callout_items[2]}" }
+  ]
+}

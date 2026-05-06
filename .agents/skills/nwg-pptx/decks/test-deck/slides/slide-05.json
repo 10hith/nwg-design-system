@@ -1,0 +1,41 @@
+{
+  "id": "slide-05",
+  "title": "Strategic Priorities 2025–2027",
+  "theme": { "palette": "nwg-purple-default" },
+  "components": [
+    {
+      "type": "kicker-label",
+      "box": { "x": 0.46, "y": 0.32, "w": 5.0, "h": 0.22 },
+      "props": { "text": "Strategy" }
+    },
+    {
+      "type": "title-block",
+      "box": { "x": 0.46, "y": 0.58, "w": 9.0, "h": 0.75 },
+      "props": { "title": "Strategic Priorities 2025–2027", "size": 28 }
+    },
+    {
+      "type": "data-table",
+      "box": { "x": 0.46, "y": 1.55, "w": 12.4, "h": 4.0 },
+      "props": {
+        "headers": ["Priority", "2025 Target", "2026 Target", "2027 Target", "Owner"],
+        "rows": [
+          ["Digital transformation", "30% digital sales", "50% digital sales", "70% digital sales", "CTO"],
+          ["Cost efficiency", "£400m savings", "£700m savings", "£1bn savings", "CFO"],
+          ["Climate commitments", "Net zero ops", "50% portfolio aligned", "Full TCFD", "CRO"],
+          ["Customer growth", "+500k retail", "+1.2m retail", "+2m retail", "CCO"],
+          ["Capital strength", "CET1 >14%", "CET1 >14.5%", "CET1 >15%", "CFO"]
+        ]
+      }
+    },
+    {
+      "type": "icon-pill",
+      "box": { "x": 0.46, "y": 5.85, "w": 3.5, "h": 0.34 },
+      "props": { "text": "Board approved Feb 2025", "tone": "gold", "round": true }
+    },
+    {
+      "type": "icon-pill",
+      "box": { "x": 4.2, "y": 5.85, "w": 3.5, "h": 0.34 },
+      "props": { "text": "Subject to regulatory review", "tone": "neutral", "round": true }
+    }
+  ]
+}

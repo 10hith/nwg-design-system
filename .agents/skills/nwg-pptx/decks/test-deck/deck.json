@@ -1,0 +1,15 @@
+{
+  "deck_id": "test-deck",
+  "title": "NWG Component Test Deck",
+  "subtitle": "Verifying all 17 components render correctly",
+  "theme": { "palette": "nwg-purple-default" },
+  "brand": { "deck_footer": "NatWest Group · Component Test" },
+  "slides": [
+    "slide-01",
+    "slide-02",
+    "slide-03",
+    "slide-04",
+    "slide-05",
+    "slide-06"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "slide-02",
+  "title": "Section — Component Showcase",
+  "theme": { "palette": "nwg-purple-default" },
+  "components": [
+    {
+      "type": "hero-band",
+      "box": { "x": 0, "y": 0, "w": 3.0, "h": 7.5 },
+      "props": { "title": "", "gradient": false }
+    },
+    {
+      "type": "section-number",
+      "box": { "x": 0.55, "y": 0.62, "w": 1.9, "h": 1.5 },
+      "props": { "number": "01", "label": "Overview", "light": true }
+    },
+    {
+      "type": "kicker-label",
+      "box": { "x": 3.5, "y": 0.38, "w": 5.0, "h": 0.22 },
+      "props": { "text": "Component Catalogue" }
+    },
+    {
+      "type": "title-block",
+      "box": { "x": 3.5, "y": 0.72, "w": 9.0, "h": 2.8 },
+      "props": { "title": "Section — Component Showcase", "size": 36 }
+    },
+    {
+      "type": "divider-bar",
+      "box": { "x": 3.5, "y": 4.5, "w": 9.0, "h": 0.04 },
+      "props": {}
+    },
+    {
+      "type": "bullet-list",
+      "box": { "x": 3.5, "y": 4.7, "w": 9.0, "h": 1.8 },
+      "props": { "items": ["17 NWG components with twin HTML + PPTX renderers", "Free composition with inch-based coordinate system", "Fully editable PPTX — no Puppeteer required"] }
+    }
+  ]
+}

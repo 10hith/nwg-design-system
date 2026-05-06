@@ -1,0 +1,12 @@
+{
+  "preset_id": "s-tree",
+  "description": "Org-chart / hierarchy tree with parent at top and children below.",
+  "slots": ["title", "parent", "child_items", "grid_title", "grid_items"],
+  "components": [
+    { "type": "title-block",  "box": { "x": 0.46, "y": 0.38, "w": 9.2, "h": 0.75 }, "props": { "title": "${title}", "size": 27 } },
+    { "type": "callout-card", "box": { "x": 4.75, "y": 1.35, "w": 3.45, "h": 0.72 }, "props": { "title": "${parent}", "body": "", "tone": "purple" } },
+    { "type": "bullet-list",  "box": { "x": 0.46, "y": 2.85, "w": 12.4, "h": 1.8  }, "props": { "items": "${child_items}" } },
+    { "type": "kicker-label", "box": { "x": 0.46, "y": 4.7,  "w": 4.0, "h": 0.22  }, "props": { "text": "${grid_title}" } },
+    { "type": "bullet-list",  "box": { "x": 0.46, "y": 5.05, "w": 12.4, "h": 1.7  }, "props": { "items": "${grid_items}" } }
+  ]
+}

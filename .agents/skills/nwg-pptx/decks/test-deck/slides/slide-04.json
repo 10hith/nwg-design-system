@@ -1,0 +1,44 @@
+{
+  "id": "slide-04",
+  "title": "Revenue Growth by Division",
+  "theme": { "palette": "nwg-purple-default" },
+  "components": [
+    {
+      "type": "kicker-label",
+      "box": { "x": 0.46, "y": 0.32, "w": 5.0, "h": 0.22 },
+      "props": { "text": "Divisional Performance" }
+    },
+    {
+      "type": "title-block",
+      "box": { "x": 0.46, "y": 0.58, "w": 9.0, "h": 0.75 },
+      "props": { "title": "Revenue Growth by Division", "size": 28 }
+    },
+    {
+      "type": "inline-chart",
+      "box": { "x": 0.5, "y": 1.5, "w": 7.2, "h": 5.0 },
+      "props": {
+        "type": "bar",
+        "x_axis": ["Retail", "Commercial", "Private", "Markets", "Central"],
+        "series": [
+          { "name": "FY2024", "values": [5800, 3200, 1400, 2100, 800] },
+          { "name": "FY2025", "values": [6400, 3800, 1700, 2400, 950] }
+        ]
+      }
+    },
+    {
+      "type": "callout-card",
+      "box": { "x": 8.1, "y": 1.5, "w": 4.8, "h": 1.5 },
+      "props": { "title": "Retail Banking", "body": "+10.3% income growth driven by mortgage market share gains and improved NIM", "tone": "purple" }
+    },
+    {
+      "type": "callout-card",
+      "box": { "x": 8.1, "y": 3.15, "w": 4.8, "h": 1.5 },
+      "props": { "title": "Commercial Banking", "body": "+18.7% reflecting SME lending growth and trade finance volumes", "tone": "neutral" }
+    },
+    {
+      "type": "callout-card",
+      "box": { "x": 8.1, "y": 4.8, "w": 4.8, "h": 1.7 },
+      "props": { "title": "Private Banking", "body": "+21.4% with AUM reaching record £38bn on strong inflows", "tone": "gold" }
+    }
+  ]
+}

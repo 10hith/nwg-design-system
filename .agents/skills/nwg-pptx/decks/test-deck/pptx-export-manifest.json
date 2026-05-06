@@ -1,0 +1,39 @@
+{
+  "title": "NWG Component Test Deck",
+  "output": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/deck.pptx",
+  "slides": [
+    {
+      "id": "slide-01",
+      "json": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-01.json",
+      "html": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-01.html"
+    },
+    {
+      "id": "slide-02",
+      "json": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-02.json",
+      "html": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-02.html"
+    },
+    {
+      "id": "slide-03",
+      "json": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-03.json",
+      "html": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-03.html"
+    },
+    {
+      "id": "slide-04",
+      "json": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-04.json",
+      "html": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-04.html"
+    },
+    {
+      "id": "slide-05",
+      "json": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-05.json",
+      "html": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-05.html"
+    },
+    {
+      "id": "slide-06",
+      "json": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-06.json",
+      "html": "/Users/basavaraj/staging/nwg_design_system/.agents/skills/nwg-pptx/decks/test-deck/slides/slide-06.html"
+    }
+  ],
+  "exported_at": "2026-05-05T16:14:43.723Z",
+  "editable_text": true,
+  "native_charts": true
+}

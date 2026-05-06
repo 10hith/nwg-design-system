@@ -1,0 +1,10 @@
+{
+  "preset_id": "s-stack",
+  "description": "Stacked checklist of key items with title and optional kicker.",
+  "slots": ["title", "kicker", "stack_items", "footer"],
+  "components": [
+    { "type": "kicker-label", "box": { "x": 0.46, "y": 0.32, "w": 4.6, "h": 0.22 }, "props": { "text": "${kicker}" } },
+    { "type": "title-block",  "box": { "x": 0.46, "y": 0.56, "w": 9.0, "h": 0.8  }, "props": { "title": "${title}", "size": 29 } },
+    { "type": "bullet-list",  "box": { "x": 0.46, "y": 1.55, "w": 12.4, "h": 5.2 }, "props": { "items": "${stack_items}" } }
+  ]
+}
